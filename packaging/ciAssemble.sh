@@ -57,4 +57,13 @@ cp -r webui/dist/assets "$OUT_DIR"/webui/dist/assets
 cp webui/dist/THIRDPARTYNOTICES.txt "$OUT_DIR"/webui/dist/THIRDPARTYNOTICES.txt
 cp options.ini "$OUT_DIR"
 ls "$OUT_DIR"
+
+# Hitman-Peacock-SteamDeck
+# if HitmanRun.exe and server.cmd are present in the temp directory, copy them to the output directory
+if [ -f "submodules/Hitman-Peacock-SteamDeck/HitmanRun.exe" ] && [ -f "submodules/Hitman-Peacock-SteamDeck/server.cmd" ]; then
+    echo "Copying HitmanRun.exe and server.cmd to $OUT_DIR..."
+    cp "submodules/Hitman-Peacock-SteamDeck/HitmanRun.exe" "$OUT_DIR"
+    cp "submodules/Hitman-Peacock-SteamDeck/server.cmd" "$OUT_DIR"
+fi
+
 zip -9 -r "$OUT_DIR".zip "$OUT_DIR"

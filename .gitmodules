@@ -1,0 +1,3 @@
+[submodule "submodules/Hitman-Peacock-SteamDeck"]
+	path = submodules/Hitman-Peacock-SteamDeck
+	url = https://github.com/RoccoC/Hitman-Peacock-SteamDeck.git
