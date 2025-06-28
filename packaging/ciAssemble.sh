@@ -21,11 +21,11 @@ VERSION=$(jq -r '.version' package.json)
 if [ "$1" == "" ]; then
     echo "Assembling $VERSION with default settings"
     IS_LINUX=false
-    OUT_DIR=Peacock-v"$VERSION"
+    OUT_DIR=temp/Peacock-v"$VERSION"
 else
     echo "Assembling $VERSION with Linux configuration"
     IS_LINUX=true
-    OUT_DIR=Peacock-v"$VERSION"-linux
+    OUT_DIR=temp/Peacock-v"$VERSION"-linux
 fi
 
 # generate options.ini
@@ -36,7 +36,7 @@ cp packaging/HOW_TO_USE.html "$OUT_DIR"
 cp PeacockPatcher.exe "$OUT_DIR"
 cp chunk*.js "$OUT_DIR"
 if [ "$IS_LINUX" != true ]; then
-    cp -r nodedist "$OUT_DIR"
+    cp -r temp/nodedist "$OUT_DIR"
     cp "packaging/Start Server.cmd" "$OUT_DIR"
     cp "packaging/Tools.cmd" "$OUT_DIR"
 fi

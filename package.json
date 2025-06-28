@@ -5,7 +5,7 @@
     "license": "AGPL-3.0",
     "scripts": {
         "start": "node chunk0.js",
-        "clean": "premove build",
+        "clean": "rm -rf build temp",
         "prettier": "pprettier --write \"**/*.{js,json,ts,md,tsx,css,mjs,html}\"",
         "prettier:check": "pprettier --check \"**/*.{js,json,ts,md,tsx,css,mjs,html}\"",
         "build": "yarn webui:build && node packaging/build.mjs",
@@ -20,7 +20,9 @@
         "run-dev": "node packaging/devLoader.mjs",
         "extract-challenge-data": "node packaging/extractChallengeData.mjs",
         "extract-featured-contracts": "node packaging/extractFeaturedContracts.mjs",
-        "find-circular": "yarn dlx dpdm components/index.ts --exclude \"(components/types)|(node_modules)\" -T"
+        "find-circular": "yarn dlx dpdm components/index.ts --exclude \"(components/types)|(node_modules)\" -T",
+        "assemble": "sh packaging/downloadNode.sh && sh packaging/ciAssemble.sh",
+        "release": "yarn run clean && yarn run build && yarn run optimize && yarn run assemble"
     },
     "prettier": {
         "semi": false,
